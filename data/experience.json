@@ -1,0 +1,14 @@
+[
+  {
+    "date": "Jan 2024 – Aug 2025",
+    "title": "Machine Learning Research Project",
+    "company": "Look Up Space, Montréal (remote)",
+    "description": "Satellite maneuver detection using ML heuristics. Designed and validated deep neural networks for orbital state prediction, unsupervised anomaly detection, and correction of numerical propagators. Processed sparse and noisy datasets (radar, laser), fused heterogeneous data sources (solar activity, ballistic coefficients), and applied deep clustering and computer vision for maneuver characterization."
+  },
+  {
+    "date": "May – Aug 2023",
+    "title": "Data Science & Orbital Mechanics Intern",
+    "company": "Look Up Space, Toulouse (on site)",
+    "description": "Developed error residual computation for the SP numerical propagator. Characterized maneuverability of space objects with statistical methods (Isolation Forest, XGBoost). Designed covariance error analysis using clustering (k-NN) and Gaussian thresholds for maneuver detection."
+  }
+]

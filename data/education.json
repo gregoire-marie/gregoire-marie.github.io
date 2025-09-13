@@ -1,0 +1,20 @@
+[
+  {
+    "date": "Sep 2023 – Aug 2025",
+    "title": "M.Sc.A. in Aerospace Engineering",
+    "institution": "ÉTS Montréal, Canada",
+    "description": "Specialization in AI for aerospace. Research project in LARCASE lab: deep learning for orbital behavior modeling and maneuver detection. Coursework in deep learning, anomaly detection, probabilistic learning (Bayesian networks, Gaussian methods, Markov models), and representation learning (GNN). Published 2 conference papers and 1 scientific poster."
+  },
+  {
+    "date": "Sep 2021 – Aug 2023",
+    "title": "Engineering Degree in Aerospace Mechanics",
+    "institution": "ISAE-ENSMA, France",
+    "description": "Specialized in orbital mechanics, applied mathematics, optimization, data science, and mission analysis."
+  },
+  {
+    "date": "Oct 2020",
+    "title": "Auditor, 14th IHEDN Student Session",
+    "institution": "Institut des Hautes Études de la Défense Nationale, Paris",
+    "description": "Seminar on French defense challenges: defense industries, multi-domain conflict, geopolitics, and strategic intelligence. Developed critical analysis of geopolitics, authored policy notes, and contributed to workshops."
+  }
+]
