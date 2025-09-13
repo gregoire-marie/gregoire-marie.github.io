@@ -1,0 +1,20 @@
+[
+  {
+    "title": "Multi-Agent Autonomous Orbital Maneuvering",
+    "link": "https://github.com/gregoire-marie/marl-swarm-evasion",
+    "description": "Learned interception and evasion maneuver policies (MADDPG) for two adversarial satellite swarms in a simulated orbital environment using RLlib, Gym (PettingZoo), and Poliastro.",
+    "tags": ["Python", "RLlib", "Gym", "PettingZoo", "Poliastro", "Reinforcement Learning"]
+  },
+  {
+    "title": "Medical Ultrasound Image Denoising",
+    "link": "https://github.com/gregoire-marie/speckle-denoising",
+    "description": "Developed computer vision models in PyTorch to denoise ultrasound scans and improve nerve structure identification in the brachial plexus.",
+    "tags": ["PyTorch", "Computer Vision", "Deep Learning", "Medical Imaging"]
+  },
+  {
+    "title": "Aircraft Simulator (1:1 scale)",
+    "link": "https://ensimulateur.ensma.fr",
+    "description": "Built a full-scale aircraft simulator in a Beechcraft Baron 55 cockpit. Led fundraising, developed navigation instruments, electronics, and 3D-printed parts. Managed a student team and technical budget.",
+    "tags": ["C++", "Arduino", "CATIA V5", "3D Printing", "Team Management"]
+  }
+]
