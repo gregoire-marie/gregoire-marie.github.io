@@ -8,6 +8,7 @@
 </head>
 <body>
   <nav class="nav">
+    <button class="nav-toggle">☰</button>
     <ul>
       <li><a href="#about">About</a></li>
       <li><a href="#experience">Experience</a></li>
@@ -42,7 +43,6 @@
       </div>
     </div>
   </section>
-
 
   <section id="experience" class="section">
     <div class="container">
@@ -140,6 +140,11 @@
       else if (scrolled >= fadeEnd) header.style.opacity = '0';
       else header.style.opacity = (1 - (scrolled - fadeStart) / (fadeEnd - fadeStart)).toString();
     }
+  });
+
+  // Mobile nav toggle
+  document.querySelector(".nav-toggle").addEventListener("click", () => {
+    document.querySelector(".nav ul").classList.toggle("active");
   });
   </script>
 
