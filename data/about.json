@@ -1,7 +1,7 @@
 {
   "title": "About",
   "paragraphs": [
-    "I am a research engineer in orbital mechanics and artificial intelligence. My work focuses on predicting satellite trajectories, detecting maneuvers, and developing machine learning methods for space situational awareness.",
-    "With experience at ÉTS Montréal and Look Up Space, I design deep learning models for time series forecasting, anomaly detection, and orbital maneuver optimization. My goal is to improve the safety and autonomy of space operations."
+    "I am a research engineer in orbital mechanics and artificial intelligence. My work focuses on detecting orbital maneuvers, computing collision risks, and developing various machine learning methods for space situational awareness.",
+    "With experience at Look Up Space, I design deep learning models for time series forecasting, anomaly detection, and observation network optimization. My goal is to improve the safety and autonomy of space operations."
   ]
 }
