@@ -1,7 +1,8 @@
 {
   "title": "About",
   "paragraphs": [
-    "I am a research engineer in orbital mechanics and artificial intelligence. My work focuses on detecting orbital maneuvers, computing collision risks, and developing various machine learning methods for space situational awareness.",
-    "With experience at Look Up Space, I design deep learning models for time series forecasting, anomaly detection, and sensor network tasking. My goal is to improve the safety and autonomy of space operations."
+    "I built practical AI systems close to orbital physics - researched detecting orbital maneuvers using machine learning - developed effective algorithms in Orekit for computing collision risks & radar-spacecraft visibilities - and designed deep learning models for time-series forecasting, anomaly detection, and sensor network tasking.",
+    "My GitHub is heteroclit and spans reinforcement learning for satellite GNC, anomaly detection, deep clustering, RAG research assistants, litterature summarization, agent cooperation, and even meal planning.",
+    "I bring an aerospace engineering approach into machine learning research for SSA: disruptive innovation with careful modeling, strong experimentation, and reproducible pipelines."
   ]
 }
