@@ -5,6 +5,7 @@
 }
 
 :root {
+    --nav-top-offset: 1rem;
     --primary: #0D1117;
     --secondary: #161B22;
     --accent: #58A6FF;
@@ -146,7 +147,7 @@ body {
 /* Navigation */
 .nav {
     position: fixed;
-    top: 1rem;
+    top: var(--nav-top-offset);
     right: 1rem;
     left: auto;
     background: rgba(22, 27, 34, 0.9);
@@ -509,6 +510,18 @@ body {
 
 /* Responsive */
 @media (max-width: 768px) {
+    body::before {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: calc(var(--nav-top-offset) + env(safe-area-inset-top, 0px));
+        background: var(--primary);
+        z-index: 999;
+        pointer-events: none;
+    }
+
     .nav {
         left: 1rem;
         right: 1rem;
