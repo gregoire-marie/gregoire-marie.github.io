@@ -1,20 +1,99 @@
 [
   {
-    "title": "Multi-Agent Autonomous Orbital Maneuvering",
-    "link": "https://github.com/gregoire-marie/marl-swarm-evasion",
-    "description": "Learned interception and evasion maneuver policies (MADDPG) for two adversarial satellite swarms in a simulated orbital environment using RLlib, Gym (PettingZoo), and Poliastro.",
-    "tags": ["Python", "RLlib", "Gym", "PettingZoo", "Poliastro", "Reinforcement Learning"]
+    "repo": "meal-plan-agent",
+    "title": "Meal Plan Agent",
+    "link": "https://github.com/gregoire-marie/meal-plan-agent",
+    "description": "Turns a fridge photo into a meal plan, shopping list, and localized budget estimate with local multimodal agents.",
+    "tags": ["Python", "Ollama", "Computer Vision", "LLM", "CLI"],
+    "updatedAt": "2026-03-24T21:34:31Z",
+    "sourcePath": "gregoire-marie/meal-plan-agent"
   },
   {
-    "title": "Medical Ultrasound Image Denoising",
+    "repo": "paper2impl-agent",
+    "title": "Paper2Impl Agent",
+    "link": "https://github.com/gregoire-marie/paper2impl-agent",
+    "description": "Implements research papers and produces an experiment plan, common pitfalls, and starter commands with local LLMs.",
+    "tags": ["Python", "Streamlit", "Ollama", "Research", "Code Generation"],
+    "updatedAt": "2026-03-24T21:28:10Z",
+    "sourcePath": "gregoire-marie/paper2impl-agent"
+  },
+  {
+    "repo": "marl-swarm-evasion",
+    "title": "MARL Swarm Evasion",
+    "link": "https://github.com/gregoire-marie/marl-swarm-evasion",
+    "description": "Trains target and interceptor satellite swarms in a cooperative-competitive orbital environment using reinforcement learning and physics simulation.",
+    "tags": ["Python", "Reinforcement Learning", "RLlib", "Orbital Mechanics", "Simulation"],
+    "updatedAt": "2026-03-24T21:27:19Z",
+    "sourcePath": "gregoire-marie/marl-swarm-evasion"
+  },
+  {
+    "repo": "agents-talk",
+    "title": "Agents Talk",
+    "link": "https://github.com/gregoire-marie/agents-talk",
+    "description": "Runs two local Ollama agents with a moderator and critic to drive adversarial or constructive conversations toward a concrete result.",
+    "tags": ["Python", "Ollama", "Multi-Agent Systems", "CLI", "LLM"],
+    "updatedAt": "2026-03-24T21:26:17Z",
+    "sourcePath": "gregoire-marie/agents-talk"
+  },
+  {
+    "repo": "paperfeed-daily-digest",
+    "title": "PaperFeed Daily Digest",
+    "link": "https://github.com/gregoire-marie/paperfeed-daily-digest",
+    "description": "Builds a small daily paper digest from seed papers and publishes a static reading website for literature review.",
+    "tags": ["Python", "Semantic Scholar", "Summarization", "Static Site", "Automation"],
+    "updatedAt": "2026-03-24T21:24:25Z",
+    "sourcePath": "gregoire-marie/paperfeed-daily-digest"
+  },
+  {
+    "repo": "ts-anomaly-detection",
+    "title": "Time-Series Anomaly Detection",
+    "link": "https://github.com/gregoire-marie/ts-anomaly-detection",
+    "description": "Notebook-based experiments around maneuver detection on time-series data.",
+    "tags": ["Jupyter Notebook", "Anomaly Detection", "Time Series", "Machine Learning"],
+    "updatedAt": "2026-03-24T21:21:52Z",
+    "sourcePath": "gregoire-marie/ts-anomaly-detection"
+  },
+  {
+    "repo": "n2d-clustering",
+    "title": "N2D Clustering",
+    "link": "https://github.com/gregoire-marie/n2d-clustering",
+    "description": "High-dimensional clustering experiments using the N2D architecture.",
+    "tags": ["Jupyter Notebook", "Clustering", "Representation Learning", "Deep Learning"],
+    "updatedAt": "2026-03-24T21:20:52Z",
+    "sourcePath": "gregoire-marie/n2d-clustering"
+  },
+  {
+    "repo": "speckle-denoising",
+    "title": "Speckle Denoising",
     "link": "https://github.com/gregoire-marie/speckle-denoising",
-    "description": "Developed computer vision models in PyTorch to denoise ultrasound scans and improve nerve structure identification in the brachial plexus.",
-    "tags": ["PyTorch", "Computer Vision", "Deep Learning", "Medical Imaging"]
+    "description": "Implements several deep learning architectures for ultrasound speckle-noise removal on the Kaggle nerve segmentation dataset.",
+    "tags": ["Python", "PyTorch", "Computer Vision", "Medical Imaging", "Deep Learning"],
+    "updatedAt": "2025-11-03T05:29:01Z",
+    "sourcePath": "gregoire-marie/speckle-denoising"
+  },
+  {
+    "repo": "arduino-buoy-imu",
+    "title": "Arduino Buoy IMU",
+    "link": "https://github.com/gregoire-marie/arduino-buoy-imu",
+    "description": "Modular buoy framework using an Arduino Nano and MPU9250 IMU for swell measurement, motion analysis, and sensor-data processing.",
+    "tags": ["Python", "Arduino", "IMU", "Signal Processing", "Embedded Systems"],
+    "updatedAt": "2025-03-15T10:32:59Z",
+    "sourcePath": "gregoire-marie/arduino-buoy-imu"
+  },
+  {
+    "repo": "algo-trading",
+    "title": "Algorithmic Trading",
+    "link": "https://github.com/gregoire-marie/algo-trading",
+    "description": "Backtesting environment for crypto trading strategies with grid search, visualization, and risk-management controls.",
+    "tags": ["Python", "Backtesting", "Trading", "Time Series", "Data Visualization"],
+    "updatedAt": "2025-02-02T11:12:18Z",
+    "sourcePath": "gregoire-marie/algo-trading"
   },
   {
     "title": "Aircraft Simulator (1:1 scale)",
     "link": "https://ensimulateur.ensma.fr",
-    "description": "Built a full-scale aircraft simulator in a Beechcraft Baron 55 cockpit. Led fundraising, developed navigation instruments, electronics, and 3D-printed parts. Managed a student team and technical budget.",
-    "tags": ["C++", "Arduino", "CATIA V5", "3D Printing", "Team Management"]
+    "description": "Built a full-scale aircraft simulator in a Beechcraft Baron 55 cockpit, covering fundraising, electronics, and 3D-printed instruments for the student team.",
+    "tags": ["C++", "Arduino", "Electronics", "3D Printing", "Systems Integration"],
+    "sourcePath": "ensimulateur.ensma.fr"
   }
 ]
