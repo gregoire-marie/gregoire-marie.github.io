@@ -478,8 +478,27 @@ body {
 }
 
 .contact-icon {
-    font-size: 2rem;
-    margin-bottom: 1rem;
+    width: 3.5rem;
+    height: 3.5rem;
+    margin: 0 auto 1rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(240, 246, 252, 0.94);
+    border-radius: 14px;
+    box-shadow: 0 12px 30px rgba(1, 4, 9, 0.18);
+    transition: transform 0.3s ease;
+}
+
+.contact-icon svg {
+    width: 1.75rem;
+    height: 1.75rem;
+    display: block;
+    flex-shrink: 0;
+}
+
+.contact-item:hover .contact-icon {
+    transform: translateY(-2px);
 }
 
 .contact-title {
