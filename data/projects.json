@@ -1,5 +1,14 @@
 [
   {
+    "repo": "atc-severity-classifier",
+    "title": "ATC Severity Classifier",
+    "link": "https://github.com/gregoire-marie/atc-severity-classifier",
+    "description": "Classifies live aviation radio messages as normal, urgency, or distress.",
+    "tags": ["Python", "Whisper", "ASR", "Transformers", "Audio Classification"],
+    "updatedAt": "2026-03-26T22:30:48Z",
+    "sourcePath": "gregoire-marie/atc-severity-classifier"
+  },
+  {
     "repo": "meal-plan-agent",
     "title": "Meal Plan Agent",
     "link": "https://github.com/gregoire-marie/meal-plan-agent",
