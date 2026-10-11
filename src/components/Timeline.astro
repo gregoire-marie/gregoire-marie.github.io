@@ -1,0 +1,398 @@
+---
+import cv from '../../data/cv.json';
+import { buildBranchLayout } from '../lib/cv-timeline.js';
+
+const now = new Date();
+const currentMonth = now.getFullYear() * 12 + now.getMonth();
+
+const normalizedEntries = cv.map((item, index) => {
+  const isEducation = item.type === 'education';
+
+  if (!isEducation && item.type !== 'experience') {
+    throw new Error(`Unknown CV entry type "${item.type}". Use "education" or "experience".`);
+  }
+
+  return {
+    ...item,
+    id: item.id ?? `${item.type}-${index + 1}`,
+    kind: isEducation ? 'Education' : 'Experience',
+    side: isEducation ? 'left' : 'right'
+  };
+});
+
+const workEntries = buildBranchLayout(
+  normalizedEntries.filter((item) => item.side === 'right'),
+  now
+);
+
+const educationEntries = buildBranchLayout(
+  normalizedEntries.filter((item) => item.side === 'left'),
+  now
+);
+
+const entries = [...workEntries, ...educationEntries]
+  .sort((a, b) => b.startMonth - a.startMonth || a.side.localeCompare(b.side));
+
+const earliestYear = Math.min(...entries.map((entry) => entry.startYear));
+const axisStartMonth = earliestYear * 12;
+const pixelsPerMonth = 18;
+const topPadding = 72;
+const bottomPadding = 220;
+const timelineHeight = topPadding + (currentMonth - axisStartMonth) * pixelsPerMonth + bottomPadding;
+
+const viewWidth = 1000;
+const mainX = viewWidth / 2;
+const laneGap = 36;
+const cardEdge = { left: 380, right: 620 };
+
+const yForMonth = (month: number) => topPadding + (currentMonth - month) * pixelsPerMonth;
+const xForLane = (side: string, lane: number) => mainX + (side === 'left' ? -1 : 1) * lane * laneGap;
+const round = (value: number) => Math.round(value * 10) / 10;
+
+const graphEntries = entries.map((entry) => {
+  const laneX = xForLane(entry.side, entry.lane);
+  const startParentX = xForLane(entry.side, entry.startParentLane);
+  const endParentX = xForLane(entry.side, entry.endParentLane);
+  const startY = yForMonth(entry.startMonth);
+  const endY = entry.isPresent ? topPadding : yForMonth(entry.endMonth);
+
+  let branchPath;
+  if (entry.isInstant) {
+    const shoulder = 15;
+    branchPath = `M ${round(startParentX)} ${round(startY - shoulder)} H ${round(laneX)} V ${round(startY + shoulder)} H ${round(startParentX)}`;
+  } else if (entry.isPresent) {
+    branchPath = `M ${round(laneX)} ${round(endY)} V ${round(startY)} H ${round(startParentX)}`;
+  } else {
+    branchPath = `M ${round(endParentX)} ${round(endY)} H ${round(laneX)} V ${round(startY)} H ${round(startParentX)}`;
+  }
+
+  return {
+    ...entry,
+    laneX,
+    nodeY: startY,
+    branchPath,
+    initialLeaderPath: `M ${round(laneX)} ${round(startY)} H ${cardEdge[entry.side]}`
+  };
+});
+
+const yearTicks = Array.from(
+  { length: now.getFullYear() - earliestYear + 1 },
+  (_, index) => now.getFullYear() - index
+).map((year) => ({ year, y: yForMonth(year * 12) }));
+---
+
+<section class="section" id="cv">
+  <div class="container">
+    <p class="section-kicker reveal">02 // Curriculum vitae</p>
+    <h2 class="section-title reveal">Professional and academic record</h2>
+    <p class="section-intro reveal"></p>
+
+    <div class="cv-tree reveal" data-cv-tree>
+      <div class="cv-tree-head">
+        <span>Education</span>
+        <span>Experience</span>
+      </div>
+
+      <div
+        class="cv-tree-stage"
+        data-cv-stage
+        data-current-month={currentMonth}
+        data-axis-start-month={axisStartMonth}
+        style={`--timeline-height: ${timelineHeight}px`}
+      >
+        <svg
+          class="cv-tree-graph"
+          viewBox={`0 0 ${viewWidth} ${timelineHeight}`}
+          preserveAspectRatio="none"
+          role="img"
+          aria-labelledby="cv-tree-title cv-tree-description"
+        >
+          <title id="cv-tree-title">CV as a Git tree</title>
+          <desc id="cv-tree-description">Experience branches appear to the right and education branches to the left. The most recent date is at the top.</desc>
+
+          <line
+            class="cv-main-line"
+            data-main-line
+            x1={mainX}
+            x2={mainX}
+            y1={topPadding}
+            y2={yForMonth(axisStartMonth)}
+          ></line>
+
+          {graphEntries.map((entry) => (
+            <g
+              class="cv-branch"
+              data-graph-entry={entry.id}
+              data-side={entry.side}
+              data-lane={entry.lane}
+              data-start-parent-lane={entry.startParentLane}
+              data-end-parent-lane={entry.endParentLane}
+              data-start-month={entry.startMonth}
+              data-end-month={entry.endMonth}
+              data-present={String(entry.isPresent)}
+              data-instant={String(entry.isInstant)}
+            >
+              <path class="cv-branch-line" d={entry.branchPath}></path>
+            </g>
+          ))}
+
+          {graphEntries.map((entry) => (
+            <path
+              class="cv-leader"
+              data-leader={entry.id}
+              d={entry.initialLeaderPath}
+            ></path>
+          ))}
+        </svg>
+
+        {graphEntries.map((entry) => (
+          <span
+            class="cv-node"
+            data-node-entry={entry.id}
+            style={`--node-x: ${entry.laneX / 10}%; --node-y: ${entry.nodeY}px`}
+            aria-hidden="true"
+          ></span>
+        ))}
+
+        <span class="cv-present-label">Present</span>
+        {yearTicks.map((tick) => (
+          <span
+            class="cv-year-label"
+            data-year-month={tick.year * 12}
+            style={`--year-y: ${tick.y}px`}
+          >{tick.year}</span>
+        ))}
+
+        <div class="cv-tree-items">
+          {graphEntries.map((entry) => (
+            <article
+              class:list={['cv-tree-item', `cv-tree-item-${entry.side}`]}
+              data-cv-entry={entry.id}
+              data-side={entry.side}
+              data-node-x={entry.laneX}
+              data-node-y={entry.nodeY}
+              data-start-month={entry.startMonth}
+              style={`--point-y: ${entry.nodeY}px`}
+            >
+              <details class="cv-entry-disclosure">
+                <summary class="cv-entry-toggle">
+                  <div class="cv-item-meta">
+                    <span class="cv-item-kind">{entry.kind}</span>
+                    <time>{entry.date}</time>
+                  </div>
+                  <h3 class="cv-entry-title">
+                    <span>{entry.title}</span>
+                    <svg class="cv-entry-chevron" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                      <path d="m4 6 4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                  </h3>
+                  <p class="cv-item-org">{entry.organisation}</p>
+                </summary>
+                <p class="cv-item-description">{entry.description}</p>
+              </details>
+            </article>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const CV_VIEWBOX_WIDTH = 1000;
+  const CV_MAIN_X = 500;
+  const CV_LANE_GAP = 36;
+  const CV_TOP_PADDING = 72;
+  const CV_BOTTOM_PADDING = 92;
+  const CV_PIXELS_PER_MONTH = 18;
+
+  const roundCoordinate = (value) => Math.round(value * 100) / 100;
+  const xForCvLane = (side, lane) => (
+    CV_MAIN_X + (side === 'left' ? -1 : 1) * lane * CV_LANE_GAP
+  );
+
+  function monthPosition(month, knots) {
+    if (month >= knots[0].month) return knots[0].y;
+
+    for (let index = 0; index < knots.length - 1; index += 1) {
+      const newer = knots[index];
+      const older = knots[index + 1];
+      if (month <= newer.month && month >= older.month) {
+        const span = newer.month - older.month;
+        const progress = span ? (newer.month - month) / span : 0;
+        return newer.y + (older.y - newer.y) * progress;
+      }
+    }
+
+    const oldest = knots.at(-1);
+    return oldest.y + (oldest.month - month) * CV_PIXELS_PER_MONTH;
+  }
+
+  function squareBranchPath(graph, startY, endY) {
+    const side = graph.dataset.side;
+    const laneX = xForCvLane(side, Number(graph.dataset.lane));
+    const startParentX = xForCvLane(side, Number(graph.dataset.startParentLane));
+    const endParentX = xForCvLane(side, Number(graph.dataset.endParentLane));
+
+    if (graph.dataset.instant === 'true') {
+      const shoulder = 15;
+      return `M ${startParentX} ${roundCoordinate(startY - shoulder)} H ${laneX} V ${roundCoordinate(startY + shoulder)} H ${startParentX}`;
+    }
+
+    if (graph.dataset.present === 'true') {
+      return `M ${laneX} ${endY} V ${startY} H ${startParentX}`;
+    }
+
+    return `M ${endParentX} ${endY} H ${laneX} V ${startY} H ${startParentX}`;
+  }
+
+  function installCvTree(tree) {
+    const stage = tree.querySelector('[data-cv-stage]');
+    if (!(stage instanceof HTMLElement)) return;
+
+    const svg = stage.querySelector('.cv-tree-graph');
+    const mainLine = stage.querySelector('[data-main-line]');
+    const items = [...tree.querySelectorAll('[data-cv-entry]')]
+      .filter((item) => item instanceof HTMLElement);
+    const leaders = new Map(
+      [...tree.querySelectorAll('[data-leader]')]
+        .map((path) => [path.getAttribute('data-leader'), path])
+    );
+    const graphs = new Map(
+      [...tree.querySelectorAll('[data-graph-entry]')]
+        .map((graph) => [graph.getAttribute('data-graph-entry'), graph])
+    );
+    const nodes = new Map(
+      [...tree.querySelectorAll('[data-node-entry]')]
+        .map((node) => [node.getAttribute('data-node-entry'), node])
+    );
+    const yearLabels = [...tree.querySelectorAll('[data-year-month]')];
+    const currentMonth = Number(stage.dataset.currentMonth);
+    const axisStartMonth = Number(stage.dataset.axisStartMonth);
+    let scheduledFrame;
+    let observedWidth = 0;
+
+    function layout() {
+      scheduledFrame = undefined;
+      const stageWidth = stage.clientWidth;
+      if (!stageWidth) return;
+
+      const gap = stageWidth < 560 ? 16 : 22;
+      const groups = new Map();
+      for (const item of items) {
+        const startMonth = Number(item.dataset.startMonth);
+        if (!groups.has(startMonth)) groups.set(startMonth, []);
+        groups.get(startMonth).push(item);
+      }
+
+      const contentTop = CV_TOP_PADDING + 24;
+      const sideBottom = { left: contentTop - gap, right: contentTop - gap };
+      const knots = [{ month: currentMonth, y: CV_TOP_PADDING }];
+      let previousGroupY = CV_TOP_PADDING - 8;
+
+      for (const [month, groupItems] of [...groups.entries()].sort((a, b) => b[0] - a[0])) {
+        const idealY = CV_TOP_PADDING + (currentMonth - month) * CV_PIXELS_PER_MONTH;
+        let rowY = Math.max(idealY, previousGroupY + 8);
+
+        for (const item of groupItems) {
+          rowY = Math.max(
+            rowY,
+            sideBottom[item.dataset.side] + gap + item.offsetHeight / 2
+          );
+        }
+
+        for (const item of groupItems) {
+          item.style.setProperty('--card-y', `${roundCoordinate(rowY)}px`);
+          sideBottom[item.dataset.side] = Math.max(
+            sideBottom[item.dataset.side],
+            rowY + item.offsetHeight / 2
+          );
+          item.dataset.nodeY = String(roundCoordinate(rowY));
+        }
+
+        knots.push({ month, y: rowY });
+        previousGroupY = rowY;
+      }
+
+      const lastKnot = knots.at(-1);
+      const axisEndY = Math.max(
+        CV_TOP_PADDING + (currentMonth - axisStartMonth) * CV_PIXELS_PER_MONTH,
+        lastKnot.y + (lastKnot.month - axisStartMonth) * CV_PIXELS_PER_MONTH
+      );
+      knots.push({ month: axisStartMonth, y: axisEndY });
+
+      const contentBottom = Math.max(sideBottom.left, sideBottom.right);
+      const stageHeight = Math.ceil(Math.max(axisEndY + CV_BOTTOM_PADDING, contentBottom + 54));
+      stage.style.setProperty('--timeline-height', `${stageHeight}px`);
+      svg?.setAttribute('viewBox', `0 0 ${CV_VIEWBOX_WIDTH} ${stageHeight}`);
+      mainLine?.setAttribute('y2', String(roundCoordinate(axisEndY)));
+
+      for (const label of yearLabels) {
+        const y = monthPosition(Number(label.dataset.yearMonth), knots);
+        label.style.setProperty('--year-y', `${roundCoordinate(y)}px`);
+      }
+
+      const stageRect = stage.getBoundingClientRect();
+      const toViewX = (pixelX) => pixelX / stageWidth * CV_VIEWBOX_WIDTH;
+
+      for (const item of items) {
+        const id = item.dataset.cvEntry;
+        const leader = leaders.get(id);
+        const graph = graphs.get(id);
+        const node = nodes.get(id);
+        if (!(leader instanceof SVGPathElement) || !(graph instanceof SVGGElement)) continue;
+
+        const side = item.dataset.side;
+        const laneX = xForCvLane(side, Number(graph.dataset.lane));
+        const startY = Number(item.dataset.nodeY);
+        const endY = graph.dataset.present === 'true'
+          ? CV_TOP_PADDING
+          : monthPosition(Number(graph.dataset.endMonth), knots);
+        const itemRect = item.getBoundingClientRect();
+        const edgePixel = side === 'left'
+          ? itemRect.right - stageRect.left
+          : itemRect.left - stageRect.left;
+        const edgeX = toViewX(edgePixel);
+        const path = graph.querySelector('.cv-branch-line');
+
+        path?.setAttribute('d', squareBranchPath(graph, startY, roundCoordinate(endY)));
+        leader.setAttribute('d', `M ${laneX} ${startY} H ${roundCoordinate(edgeX)}`);
+        if (node instanceof HTMLElement) node.style.setProperty('--node-y', `${startY}px`);
+      }
+    }
+
+    function scheduleLayout() {
+      if (scheduledFrame) cancelAnimationFrame(scheduledFrame);
+      scheduledFrame = requestAnimationFrame(layout);
+    }
+
+    const disclosures = [...tree.querySelectorAll<HTMLDetailsElement>('.cv-entry-disclosure')];
+    disclosures.forEach((disclosure) => {
+      disclosure.addEventListener('toggle', () => {
+        if (disclosure.open) {
+          disclosures.forEach((other) => {
+            if (other !== disclosure) other.open = false;
+          });
+        }
+        scheduleLayout();
+      });
+    });
+
+    // Expanded descriptions and font changes affect card heights independently
+    // of the tree width. Keep branches and neighbouring cards aligned.
+    const itemResizeObserver = new ResizeObserver(scheduleLayout);
+    items.forEach((item) => itemResizeObserver.observe(item));
+
+    const resizeObserver = new ResizeObserver(() => {
+      const width = tree.clientWidth;
+      if (Math.abs(width - observedWidth) < 0.5) return;
+      observedWidth = width;
+      scheduleLayout();
+    });
+    resizeObserver.observe(tree);
+    scheduleLayout();
+    document.fonts?.ready.then(scheduleLayout);
+  }
+
+  document.querySelectorAll('[data-cv-tree]').forEach(installCvTree);
+</script>

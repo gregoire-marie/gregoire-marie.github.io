@@ -1,0 +1,39 @@
+---
+const categories = [
+  {
+    name: 'Space surveillance', icon: 'qhgmphtg',
+    items: ['Sensor tasking', 'Radar visibility', 'Optical sensors', 'Laser ranging', 'RF sensors', 'Uncertainty']
+  },
+  {
+    name: 'Orbital mechanics', icon: 'gvtjlyjf',
+    items: ['Orbit propagation', 'Collision risk', 'Maneuver detection', 'State estimation', 'Mission analysis', 'Orekit']
+  },
+  {
+    name: 'Machine learning', icon: 'lzgmgrnn',
+    items: ['Deep learning', 'Time series', 'Anomaly detection', 'Reinforcement learning', 'Clustering', 'Probabilistic models']
+  },
+  {
+    name: 'Scientific engineering', icon: 'xqdfobxg',
+    items: ['Python', 'PyTorch', 'Simulation', 'Optimization', 'Reproducible pipelines', 'Embedded systems']
+  }
+];
+---
+<section class="section section-alt" id="methods">
+  <div class="container">
+    <p class="section-kicker reveal">05 // Expertise</p>
+    <h2 class="section-title reveal">Knowledge and skills</h2>
+    <div class="skills-grid">
+      {categories.map((category, index) => (
+        <article class:list={['skill-group', 'reveal', index % 2 === 1 && 'reveal-delay']}>
+          <div class="skill-heading">
+            <lord-icon src={`https://cdn.lordicon.com/${category.icon}.json`} trigger="morph" class="skill-icon"></lord-icon>
+            <h3>{category.name}</h3>
+          </div>
+          <div class="skill-tags">
+            {category.items.map((item) => <span>{item}</span>)}
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,8 +1,26 @@
 {
   "title": "About",
   "paragraphs": [
-    "I built practical AI systems close to orbital physics - researched detecting orbital maneuvers using machine learning - developed effective algorithms in Orekit for computing collision risks & radar-spacecraft visibilities - and designed deep learning models for time-series forecasting, anomaly detection, and sensor network tasking.",
-    "My GitHub is heteroclit and spans reinforcement learning for satellite GNC, anomaly detection, deep clustering, RAG research assistants, litterature summarization, agent cooperation, and even meal planning.",
-    "I bring an aerospace engineering approach into machine learning research for SSA: disruptive innovation with careful modeling, strong experimentation, and reproducible pipelines."
+    "I am a research engineer based in Toulouse with 3+ years experience of building AI models for space surveillance.",
+    "My work combines deep learning, machine learning and mathematical optimization in various domains, mostly involving orbital mechanics.",
+    "Precedently, I researched orbital-maneuver detection and characterization, collision-risk assessment, visibility analysis and measurement simulation.",
+    "Beyond work I share open-source projects exploring satellite swarms control by reinforcement learning, deep clustering, RAG research assistants, ATC communication sentiment analysis, multi-agent debate, and more."
+  ],
+  "highlights": [
+    {
+      "icon": "kbtmbyzy",
+      "value": "3+",
+      "label": "Years of experience"
+    },
+    {
+      "icon": "vbmtnozn",
+      "value": "2",
+      "label": "Peer-reviewed publications"
+    },
+    {
+      "icon": "yvjimpju",
+      "value": "OSS",
+      "label": "Open-source contributor"
+    }
   ]
 }

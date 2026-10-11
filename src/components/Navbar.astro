@@ -1,0 +1,32 @@
+<nav class="site-nav" id="site-nav" aria-label="Main navigation">
+  <div class="container nav-inner">
+    <a class="nav-name" href="#top">grégoire marie</a>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#cv">CV</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#publications">Publications</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div>
+      <button class="icon-button" id="theme-toggle" aria-label="Toggle color theme"><span aria-hidden="true">◐</span></button>
+      <button class="icon-button menu-button" id="menu-toggle" aria-label="Toggle menu" aria-expanded="false"><span aria-hidden="true">☰</span></button>
+    </div>
+  </div>
+</nav>
+<script>
+  const nav = document.getElementById('site-nav');
+  const menuButton = document.getElementById('menu-toggle');
+  const links = document.getElementById('nav-links');
+  addEventListener('scroll', () => nav?.classList.toggle('scrolled', scrollY > 20), { passive: true });
+  menuButton?.addEventListener('click', () => {
+    const open = links?.classList.toggle('open') ?? false;
+    menuButton.setAttribute('aria-expanded', String(open));
+  });
+  links?.addEventListener('click', () => { links.classList.remove('open'); menuButton?.setAttribute('aria-expanded', 'false'); });
+  document.getElementById('theme-toggle')?.addEventListener('click', () => {
+    const dark = document.documentElement.classList.toggle('dark');
+    localStorage.setItem('theme', dark ? 'dark' : 'light');
+    dispatchEvent(new Event('themechange'));
+  });
+</script>

@@ -1,0 +1,30 @@
+---
+import about from '../../data/about.json';
+---
+<section class="section section-alt" id="about">
+  <div class="container">
+    <p class="section-kicker reveal">01 // Profile</p>
+    <h2 class="section-title reveal">Who I am</h2>
+    <div class="about-layout">
+      <div class="about-copy">
+        {about.paragraphs.map((paragraph) => <p class="reveal">{paragraph}</p>)}
+      </div>
+      <div class="about-stats reveal" aria-label="Profile highlights">
+        {about.highlights.map((highlight) => (
+          <div class="about-stat">
+            <div class="about-stat-heading">
+              <lord-icon
+                src={`https://cdn.lordicon.com/${highlight.icon}.json`}
+                trigger="morph"
+                class="about-stat-icon"
+                aria-hidden="true"
+              ></lord-icon>
+              <p class="about-stat-value">{highlight.value}</p>
+            </div>
+            <p class="about-stat-label">{highlight.label}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

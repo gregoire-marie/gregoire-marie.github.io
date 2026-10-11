@@ -1,0 +1,32 @@
+---
+const heroDescription = "I research AI for space.\nI pursue a PhD in optimization.\nI work for Look Up Space on space surveillance networks.";
+const heroDescriptionLines = heroDescription.split('\n');
+---
+
+<header class="hero" id="top">
+  <div class="container hero-grid">
+    <div class="hero-copy">
+      <p class="hero-label reveal">PhD candidate · ISAE-SUPAERO - Look Up Space</p>
+      <div class="hero-title-row reveal">
+        <svg class="hero-title-icon" viewBox="0 0 240 240" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M72 76c0-26 18-43 43-43 27 0 45 18 45 43v13c0 27-19 47-44 47S72 116 72 89V76Z" />
+          <path d="M75 68c9-3 16-10 20-21 11 13 28 20 61 19" />
+          <circle cx="96" cy="86" r="12" />
+          <circle cx="136" cy="86" r="12" />
+          <path d="M108 86h16M83 83l-11-4M149 83l11-4M105 112c7 6 15 6 22 0" />
+          <path d="M93 132v15l23 25 23-25v-15M93 145l-35 16-12 48h140l-12-48-35-16" />
+          <path d="M88 148l28 24-20 18-15-36M144 148l-28 24 20 18 15-36M116 172v37" />
+          <path class="hero-title-icon-accent" d="M168 124v25l-20 39c-4 8 1 17 10 17h40c9 0 14-9 10-17l-20-39v-25M160 124h36M157 174h42" />
+        </svg>
+        <h1><span>Grégoire</span> <span>Marie</span></h1>
+      </div>
+      <p class="hero-description reveal">
+        {heroDescriptionLines.map((line) => <span>{line}</span>)}
+      </p>
+      <div class="hero-actions reveal">
+        <a class="button button-primary" href="#projects">Explore research</a>
+        <a class="button" href="#publications">Read publications</a>
+      </div>
+    </div>
+  </div>
+</header>

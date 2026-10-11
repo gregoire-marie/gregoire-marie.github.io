@@ -1,0 +1,25 @@
+---
+import publications from '../../data/publications.json';
+const items = publications.map((publication) => {
+  const doi = publication.venue.match(/DOI:\s*([^\s]+)/i)?.[1]?.replace(/[.,;]$/, '');
+  return { ...publication, doi, href: doi ? `https://doi.org/${doi}` : undefined };
+});
+---
+<section class="section" id="publications">
+  <div class="container">
+    <p class="section-kicker reveal">04 // Scientific contributions</p>
+    <h2 class="section-title reveal">Publications</h2>
+    <div class="publication-list">
+      {items.map((publication, index) => (
+        <a class="publication reveal" href={publication.href} target="_blank" rel="noopener noreferrer" aria-label={`Open ${publication.title} using its DOI`}>
+          <span class="publication-number">P{String(index + 1).padStart(2, '0')}</span>
+          <div>
+            <h3>{publication.title} <span aria-hidden="true">↗</span></h3>
+            <p>{publication.authors}</p>
+            <p class="mono">{publication.venue}</p>
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
