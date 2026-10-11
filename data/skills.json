@@ -1,0 +1,22 @@
+[
+  {
+    "name": "Space Situational Awareness (SSA)",
+    "icon": "gvtjlyjf",
+    "items": ["Orbit propagation", "Collision risk", "Maneuver detection", "Sensor tasking", "Orekit"]
+  },
+  {
+    "name": "Machine learning",
+    "icon": "lzgmgrnn",
+    "items": ["Deep learning", "Time series", "Anomaly detection", "Reinforcement learning", "Probabilistic learning", "Representation learning", "PyTorch"]
+  },
+  {
+    "name": "Mathematical optimization",
+    "icon": "qhgmphtg",
+    "items": ["Mixed/linear programing", "Multi-objective optimization", "Optimization under uncertainty", "Gurobi", "CPLEX"]
+  },
+  {
+    "name": "Languages",
+    "icon": "xqdfobxg",
+    "items": ["Python", "Java", "MATLAB", "C++", "Bash"]
+  }
+]
