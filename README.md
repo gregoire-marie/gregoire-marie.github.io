@@ -1,6 +1,6 @@
 # gregoire-marie.github.io
 
-Personal research portfolio for [Grégoire Marie](https://gregoire-marie.com), focused on artificial intelligence, orbital mechanics, and space domain awareness.
+Personal research portfolio for [Grégoire Marie](https://gregoire-marie.com).
 
 ## Development
 
@@ -21,6 +21,7 @@ In the repository's **Settings → Pages**, select **GitHub Actions** as the pub
 - `data/cv.json` — complete CV timeline; set an entry's `type` to `education` or `experience` to choose its side
 - `data/projects.json` — curated project metadata and build fallback
 - `data/publications.json` — scientific publications
+- `data/skills.json` — skill categories, icons, and items
 
 ### Project categories
 

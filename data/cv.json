@@ -5,7 +5,7 @@
     "date": "Jun 2026 – Present",
     "title": "PhD Candidate — Optimal Planning for Space Surveillance Sensor Networks",
     "organisation": "ISAE-SUPAERO - Look Up Space, Toulouse (CIFRE)",
-    "description": "Doctoral diploma in industrial collaboration. Research on optimal scheduling of heterogeneous space surveillance sensors (mechanical radars, phased array surveillance and tracking radars, telescopes, lasers, and RF sensors) under multi-domain operational constraints and environmental uncertainty."
+    "description": "Industrial PhD conducted in collaboration with Look Up Space. Research on optimal scheduling of heterogeneous space surveillance sensors (mechanically steered radars, phased array surveillance and tracking radars, telescopes, lasers, and RF sensors), under multi-domain constraints and environmental uncertainty."
   },
   {
     "id": "space-surveillance-engineer",
@@ -13,7 +13,7 @@
     "date": "May 2026 – Present",
     "title": "Space Surveillance Research Engineer",
     "organisation": "Look Up Space, Toulouse",
-    "description": "Developing orbtial mechanics algorithms for the SYNAPSE space surveillance platform."
+    "description": "Developing orbital mechanics algorithms for the SYNAPSE space surveillance platform."
   },
   {
     "id": "sda-expert",
@@ -21,7 +21,7 @@
     "date": "Oct 2025 – Apr 2026",
     "title": "Space Domain Awareness (SDA) and Orbital Mechanics Expert",
     "organisation": "Look Up Space, Toulouse",
-    "description": "Consulting mission to develop and improve orbital mechanics algorithms for collision-risk assessment, sensor visibility prediction, and ground-based measurement simulation."
+    "description": "Consulting assignment focused on developing and improving orbital mechanics algorithms for collision-risk assessment, sensor visibility prediction, and ground-based measurement simulation."
   },
   {
     "id": "aerospace-msc",
@@ -29,7 +29,7 @@
     "date": "Sep 2023 – Aug 2025",
     "title": "M.Sc.A. in Artificial Intelligence",
     "organisation": "ÉTS Montréal, Canada",
-    "description": "Masters diploma specialized in aerospace and AI, with research in the LARCASE laboratory on deep learning for orbital maneuver detection and satellite behavior modeling. Coursework in deep learning, machine learning, probabilistic learning (Bayesian networks, Gaussian methods, Markov models), and representation learning (GNN). Published two conference papers and one scientific poster."
+    "description": "Master's degree specializing in aerospace and AI, with research in the LARCASE laboratory on deep learning for orbital maneuver detection and satellite behavior modeling. Coursework in deep learning, machine learning, probabilistic learning, and representation learning. Published two conference papers and one scientific poster."
   },
   {
     "id": "ml-researcher",
@@ -37,7 +37,7 @@
     "date": "Jan 2024 – Aug 2025",
     "title": "Machine Learning Researcher",
     "organisation": "Look Up Space, Montréal (remote)",
-    "description": "Researched data-driven orbital maneuver detection. Developed time-series deep forecasting models integrating exogeneous data (solar activity, ballistic coefficients) for orbital state prediction, and correction of traditional numerical propagators. Proposed conditionned Gaussian Mixture Models (CGMMs) for unsupervised anomaly detection based on external data, and a framework for maneuver characterization based on deep clustering and computer vision on Discret Wavelet Transform (DWT)."
+    "description": "Researched data-driven orbital maneuver detection. Developed time-series deep learning forecasting models incorporating exogenous data (solar activity, ballistic coefficients) for orbital state prediction and correction of conventional numerical propagation models. Proposed conditioned Gaussian Mixture Models (CGMMs) for unsupervised anomaly detection based on external data, and a framework for maneuver characterization based on deep clustering and computer vision techniques applied to discrete wavelet transforms (DWTs)."
   },
   {
     "id": "aerospace-engineering",
@@ -45,15 +45,15 @@
     "date": "Sep 2021 – Aug 2023",
     "title": "Engineering Degree in Aerospace Mechanics",
     "organisation": "ISAE-ENSMA, France",
-    "description": "Engineering school diploma (masters equivqlent) specialized in orbital mechanics, applied mathematics, optimization, data science, and satellite mission analysis."
+    "description": "Engineering degree (master's-level qualification) specialized in orbital mechanics, applied mathematics, optimization, data science, and satellite mission analysis."
   },
   {
     "id": "orbital-mechanics-intern",
     "type": "experience",
     "date": "May – Aug 2023",
     "title": "Data Science & Orbital Mechanics Intern",
-    "organisation": "Look Up Space, Toulouse (on site)",
-    "description": "Developed an analysis framework for the Special Perturbation (SP) numerical propagation model. Created ML-based methods for satellite maneuverability characterization using Isolation Forest, XGBoost. Designed maneuver detection methods by covariance error analysis using clustering (k-NN)."
+    "organisation": "Look Up Space, Toulouse (on-site)",
+    "description": "Developed an analysis framework for the Special Perturbation (SP) numerical propagation model. Created ML-based methods for satellite maneuverability characterization using Isolation Forest and XGBoost. Designed maneuver detection methods through covariance-error analysis and clustering (k-NN)."
   },
   {
     "id": "ihedn-auditor",
@@ -61,6 +61,6 @@
     "date": "Oct 2021",
     "title": "Auditor, 14th IHEDN Student Session",
     "organisation": "Institut des Hautes Études de la Défense Nationale, Paris",
-    "description": "Studied practical French defense and geopolitics, covering multi-domain conflictuality, strategy and defense industries through seminars and workshops. Wrote a policy note on warfare robotization stakes and oportunities for the French army."
+    "description": "Studied French defense policy and geopolitics, covering multi-domain conflictuality, strategy and defense industries through seminars and workshops. Wrote a policy note on the challenges and opportunities of warfare robotization for the French army."
   }
 ]

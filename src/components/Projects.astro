@@ -36,10 +36,10 @@ projectList.sort((a, b) => new Date(b.updatedAt || 0).getTime() - new Date(a.upd
 
 const projects = {
   label: '03 // PROJECTS',
-  heading: 'Selected open source work',
+  heading: 'Selected open-source projects',
   statuses: [
     { label: 'All' },
-    { label: 'Open Source', color: '#2E5090' },
+    { label: 'Open-Source', color: '#2E5090' },
     { label: 'Archived', color: '#6B7280' }
   ],
   items: projectList.map((project, index) => {
@@ -49,7 +49,7 @@ const projects = {
       description: project.description,
       category: String(project.category || 'other').trim().toLowerCase(),
       icon: project.icon || 'gsjfryhc',
-      status: project.status ?? (isRepository ? 'Open Source' : ''),
+      status: project.status ?? (isRepository ? 'Open-Source' : ''),
       featured: index < 4,
       links: [{
         url: project.link,

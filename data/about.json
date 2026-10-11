@@ -1,10 +1,10 @@
 {
   "title": "About",
   "paragraphs": [
-    "I am a research engineer based in Toulouse with 3+ years experience of building AI models for space surveillance.",
-    "My work combines deep learning, machine learning and mathematical optimization in various domains, mostly involving orbital mechanics.",
-    "Precedently, I researched orbital-maneuver detection and characterization, collision-risk assessment, visibility analysis and measurement simulation.",
-    "Beyond work I share open-source projects exploring satellite swarms control by reinforcement learning, deep clustering, RAG research assistants, ATC communication sentiment analysis, multi-agent debate, and more."
+    "I am a research engineer based in Toulouse, France with over three years of experience developing AI models for space surveillance.",
+    "My work combines machine learning and mathematical optimization, primarily for applications in orbital mechanics.",
+    "Previously, I researched orbital-maneuver detection and characterization, collision-risk assessment, visibility analysis and measurement simulation.",
+    "Outside of my research, I develop open-source projects exploring satellite swarm control using reinforcement learning, deep clustering, RAG-based research assistants, ATC communication sentiment analysis, multi-agent debate, and more."
   ],
   "highlights": [
     {
